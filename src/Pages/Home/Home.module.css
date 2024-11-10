@@ -72,3 +72,17 @@
 .marketCap {
     text-align: right;
 }
+
+.tableLayout:last-child {
+    border: none;
+}
+
+.tableLayout div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.tableLayout div img {
+    width: 35px;
+}

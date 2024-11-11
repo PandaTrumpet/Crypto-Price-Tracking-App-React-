@@ -97,3 +97,27 @@
     color: #ff4646;
     text-align: center;
 }
+
+@media(max-width:768px) {
+    .tableLayout {
+        grid-template-columns: 0.5fr 3fr 1fr 1fr;
+    }
+
+    .marketCap {
+        display: none;
+    }
+}
+
+@media(max-width:500px) {
+    .tableLayout div img {
+        width: 25px;
+    }
+
+    .tableLayout {
+        font-size: 13px;
+    }
+
+    .hero form input {
+        width: 100px;
+    }
+}

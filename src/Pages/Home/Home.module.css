@@ -86,3 +86,14 @@
 .tableLayout div img {
     width: 35px;
 }
+
+.tableLayout .green {
+    color: #00D515;
+    text-align: center;
+
+}
+
+.tableLayout .red {
+    color: #ff4646;
+    text-align: center;
+}

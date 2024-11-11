@@ -43,7 +43,13 @@ const Home = () => {
             <p>
               {currency.symbol} {item.current_price.toLocaleString()}
             </p>
-            <p>{item.price_change_percentage_24h}</p>
+            <p
+              className={
+                item.price_change_percentage_24h > 0 ? css.green : css.red
+              }
+            >
+              {item.price_change_percentage_24h}
+            </p>
             <p className={css.marketCap}>
               {currency.symbol} {item.market_cap.toLocaleString()}
             </p>

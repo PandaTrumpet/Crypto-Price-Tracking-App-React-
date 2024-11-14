@@ -2,9 +2,11 @@ import { useContext, useEffect, useState } from "react";
 import css from "./Coin.module.css";
 import { useParams } from "react-router-dom";
 import { CoinContext } from "../../context/coinContext.jsx";
+import LineChart from "../../Components/LineChart/LineChart.jsx";
 const Coin = () => {
   const { coinId } = useParams();
   const [coinData, setCoinData] = useState();
+  const [historicalData, setHistoricalData] = useState();
   // console.log(coinData.image.large);
 
   const { currency } = useContext(CoinContext);
@@ -22,10 +24,23 @@ const Coin = () => {
       .then((res) => setCoinData(res))
       .catch((err) => console.error(err));
   };
+  const fetchHistoricalData = async () => {
+    const options = { method: "GET", headers: { accept: "application/json" } };
+
+    fetch(
+      `https://api.coingecko.com/api/v3/coins/${coinId}/market_chart?vs_currency=${currency.name}&days=10`,
+      options
+    )
+      .then((res) => res.json())
+      .then((res) => setHistoricalData(res))
+      .catch((err) => console.error(err));
+  };
+
   useEffect(() => {
     fetchCoinData();
+    fetchHistoricalData();
   }, [currency]);
-  if (coinData) {
+  if ((coinData, historicalData)) {
     return (
       <div className={css.coin}>
         <div className={css.coinName}>
@@ -35,6 +50,10 @@ const Coin = () => {
               {coinData.name}({coinData.symbol.toUpperCase()})
             </b>
           </p>
+        </div>
+
+        <div className={css.coinChart}>
+          <LineChart historicalData={historicalData} />
         </div>
       </div>
     );

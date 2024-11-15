@@ -7,10 +7,10 @@ const Coin = () => {
   const { coinId } = useParams();
   const [coinData, setCoinData] = useState();
   const [historicalData, setHistoricalData] = useState();
-  // console.log(coinData.image.large);
+  
 
   const { currency } = useContext(CoinContext);
-  const fetchCoinData = async () => {
+
     const options = {
       method: "GET",
       headers: {
@@ -18,33 +18,42 @@ const Coin = () => {
         "x-cg-demo-api-key": "CG-uM58wvtiR1BsxCBiLWnX3Jmh",
       },
     };
+  const fetchCoinData = async () => {
+  try {
+    const res = await fetch(`https://api.coingecko.com/api/v3/coins/${coinId}`, options);
+    const data = await res.json();
+    setCoinData(data);
+  } catch (err) {
+    console.error(err);
+  }
+};
 
-    fetch(`https://api.coingecko.com/api/v3/coins/${coinId}`, options)
-      .then((res) => res.json())
-      .then((res) => setCoinData(res))
-      .catch((err) => console.error(err));
-  };
+  const optionsHistorical = { method: "GET", headers: { accept: "application/json" } };
   const fetchHistoricalData = async () => {
-    const options = { method: "GET", headers: { accept: "application/json" } };
-
-    fetch(
+    try {
+      const res = await fetch(
       `https://api.coingecko.com/api/v3/coins/${coinId}/market_chart?vs_currency=${currency.name}&days=10&interval=daily`,
-      options
-    )
-      .then((res) => res.json())
-      .then((res) => setHistoricalData(res))
-      .catch((err) => console.error(err));
+        optionsHistorical
+      )
+      const data = await res.json()
+      setHistoricalData(data)
+    } catch (error) {
+      console.error(error);
+      
+    }
+
   };
 
   useEffect(() => {
     fetchCoinData();
     fetchHistoricalData();
-  }, [currency]);
-  if ((coinData, historicalData)) {
+  }, [currency,coinId]);
+
+  if (coinData && historicalData) {
     return (
       <div className={css.coin}>
         <div className={css.coinName}>
-          <img src={coinData.image.large} alt="Coin icon" />
+          <img src={coinData?.image?.large} alt="Coin icon" />
           <p>
             <b>
               {coinData.name}({coinData.symbol.toUpperCase()})

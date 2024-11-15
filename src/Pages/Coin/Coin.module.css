@@ -40,5 +40,24 @@
     font-weight: 500;
 }
 .coinChart {
-    
+    max-width: 600px;
+    height: 250px;
+    margin: auto;
+}
+.coinInfo {
+    max-width: 600px;
+    margin: 50px auto;
+    display: flex;
+    flex-direction: column;
+}
+.coinInfo ul {
+display: flex;
+justify-content: space-between;
+padding: 10px 0px ;
+border-bottom: 1px solid #5f5d5f ;
+list-style: none;
+}
+.coinInfo ul li :last-child{
+    font-weight: 300;
+
 }

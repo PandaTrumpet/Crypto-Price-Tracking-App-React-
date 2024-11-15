@@ -5,7 +5,7 @@ const LineChart = ({ historicalData }) => {
   useEffect(() => {
     let dataCopy = [["Date", "Prices"]];
     if (historicalData.prices) {
-      console.log(historicalData);
+      // console.log(historicalData);
 
       historicalData.prices.map((item) => {
         dataCopy.push([

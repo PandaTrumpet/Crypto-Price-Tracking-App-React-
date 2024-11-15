@@ -32,7 +32,7 @@ const Home = () => {
           Crypto Marketplace
         </h1>
         <p>
-          Welcom to the world's largest cryptocurrency marketplace. Sign up to
+          Welcom to the world&lsquo;s largest cryptocurrency marketplace. Sign up to
           explore more about cryptos.
         </p>
         <form onSubmit={searchHandler}>

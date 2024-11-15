@@ -1,5 +1,7 @@
+/* eslint-disable react/prop-types */
 import { createContext, useEffect, useState } from "react";
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const CoinContext = createContext();
 
 const CoinContextProvider = (props) => {
@@ -31,6 +33,7 @@ const CoinContextProvider = (props) => {
   };
   useEffect(() => {
     fetchAllCoin();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currency]);
   const contextValue = {
     allCoin,

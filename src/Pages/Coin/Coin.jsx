@@ -47,6 +47,7 @@ const Coin = () => {
   useEffect(() => {
     fetchCoinData();
     fetchHistoricalData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currency,coinId]);
 
   if (coinData && historicalData) {

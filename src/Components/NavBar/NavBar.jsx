@@ -2,7 +2,6 @@ import css from "./NavBar.module.css";
 import logo from "../../assets/logo.png";
 
 import { useContext } from "react";
-import { CoinContext } from "../../context/coinContext.jsx";
 import { Link } from "react-router-dom";
 const NavBar = () => {
   const { setCurrency } = useContext(CoinContext);

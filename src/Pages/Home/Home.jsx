@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import css from "./Home.module.css";
-
+import { CoinContext } from "../../utils/Context";
 import { Link } from "react-router-dom";
 
 const Home = () => {

@@ -1,6 +1,6 @@
 import css from "./NavBar.module.css";
 import logo from "../../assets/logo.png";
-
+import { CoinContext } from "../../utils/Context";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 const NavBar = () => {
